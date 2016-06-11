@@ -116,5 +116,11 @@ public class ActionProxy implements action.Action {
     return action.searchAll();
   }
   
+  public java.lang.String searchById(java.lang.String id_annonce) throws java.rmi.RemoteException{
+    if (action == null)
+      _initActionProxy();
+    return action.searchById(id_annonce);
+  }
+  
   
 }

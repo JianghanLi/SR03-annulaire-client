@@ -19,5 +19,6 @@ public interface Action extends java.rmi.Remote {
     public java.lang.String searchByCategorie(java.lang.String categorie) throws java.rmi.RemoteException;
     public java.lang.String searchByCodepostal(java.lang.String codePostal) throws java.rmi.RemoteException;
     public java.lang.String searchByNom(java.lang.String nom) throws java.rmi.RemoteException;
+    public java.lang.String searchById(java.lang.String id_annonce) throws java.rmi.RemoteException;
     public java.lang.String searchAll() throws java.rmi.RemoteException;
 }
