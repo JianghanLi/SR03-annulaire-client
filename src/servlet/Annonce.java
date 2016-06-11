@@ -44,6 +44,20 @@ public class Annonce extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ActionProxy ap = new ActionProxy();
+		String action = request.getParameter("action");
+		int id_annonce = Integer.parseInt(request.getParameter("id_annonce"));
+		if(action.equals("modify")) {
+			String categorie = request.getParameter("categorie");
+			String code_postal = request.getParameter("code_postal");
+			String nom = request.getParameter("nom");
+			String rue = request.getParameter("rue");
+			String telephone = request.getParameter("telephone");
+			String text = request.getParameter("text");
+			String ville = request.getParameter("ville");
+			ap.modifyAnnonce(categorie, nom, rue, ville, code_postal, telephone, text, id_annonce);
+		}
+		response.sendRedirect("/SR03-annulaire-client/annonceDetail.jsp?id_annonce="+id_annonce);
 	}
 
 	/**
