@@ -27,32 +27,36 @@
     <p>Annonces</p>
     <table class="table annonces">
         <tr>
+            <td>id_annonce</td>
             <td>categorie</td>
             <td>nom</td>
             <td>telephone</td>
             <td>code_postal</td>
             <td>ville</td>
             <td>text</td>
+            <td>action</td>
         </tr>
     </table>
     <script type="text/javascript">
 		var annonces = <%= annonce%>;
 		function addAnnonce(annonce) {
-			var annonceString = '<tr>' + 
+			var annonceString = '<tr id_annonce=' + annonce.id_annonce + '>' + 
+			'<td>' + annonce.id_annonce + '</td>' + 
 			'<td>' + annonce.categorie + '</td>' + 
 			'<td>' + annonce.nom + '</td>' +
 			'<td>' + annonce.telephone + '</td>' +
 			'<td>' + annonce.code_postal + '</td>' +
-			'<td>' + annonce.text + '</td></tr>';
-			console.log(annonceString);
-			console.log(annonce);
+			'<td>' + annonce.text + '</td>' + 
+			'<td> Editer </td>' +
+			'<td><a href="/SR03-annulaire-client/Annonce?action=delete&id=' + annonce.id_annonce + '">Supprimer</a></td>' +
+			'</tr>';
 			$('.table.annonces tbody').append(annonceString);  
 		}
 		for (var i=0; i<annonces.length; ++i) {
 			addAnnonce(annonces[i]);
 		}
 	</script>
-	<form class="form-wrapper cf" method="PUT" action="/SR03-annulaire-client/Categorie">
+	<form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
 	   	<input type="text" name="query" placeholder="new categorie name.." required>
 	    <button type="submit">Add Categorie</button>
 	</form>
