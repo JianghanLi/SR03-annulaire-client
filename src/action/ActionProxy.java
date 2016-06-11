@@ -50,12 +50,6 @@ public class ActionProxy implements action.Action {
     return action.test();
   }
   
-  public java.lang.String searchByCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
-    if (action == null)
-      _initActionProxy();
-    return action.searchByCategorie(categorie);
-  }
-  
   public java.lang.String newAnnonce(java.lang.String categorie, java.lang.String nom, java.lang.String rue, java.lang.String ville, java.lang.String postal, java.lang.String tele, java.lang.String text) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
@@ -90,6 +84,18 @@ public class ActionProxy implements action.Action {
     if (action == null)
       _initActionProxy();
     return action.deleteCategorie(categorie);
+  }
+  
+  public java.lang.String getGategorie() throws java.rmi.RemoteException{
+    if (action == null)
+      _initActionProxy();
+    return action.getGategorie();
+  }
+  
+  public java.lang.String searchByCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
+    if (action == null)
+      _initActionProxy();
+    return action.searchByCategorie(categorie);
   }
   
   public java.lang.String searchByCodepostal(java.lang.String codePostal) throws java.rmi.RemoteException{

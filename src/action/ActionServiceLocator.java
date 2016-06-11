@@ -22,7 +22,7 @@ public class ActionServiceLocator extends org.apache.axis.client.Service impleme
     }
 
     // Use to get a proxy class for Action
-    private java.lang.String Action_address = "http://localhost:8080/SR03-annulaire/services/Action";
+    private java.lang.String Action_address = "http://localhost:8080/exercise1/services/Action";
 
     public java.lang.String getActionAddress() {
         return Action_address;
