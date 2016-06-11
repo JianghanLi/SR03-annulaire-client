@@ -4,6 +4,16 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://action" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="searchAll">
+    <complexType/>
+   </element>
+   <element name="searchAllResponse">
+    <complexType>
+     <sequence>
+      <element name="searchAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="test">
     <complexType/>
    </element>
@@ -42,7 +52,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="newAnnonceResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="newAnnonceReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="modifyAnnonce">
     <complexType>
@@ -59,7 +73,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="modifyAnnonceResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="modifyAnnonceReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="deleteAnnonce">
     <complexType>
@@ -69,7 +87,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="deleteAnnonceResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="deleteAnnonceReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="newCategorie">
     <complexType>
@@ -79,7 +101,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="newCategorieResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="newCategorieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="modifyCategorie">
     <complexType>
@@ -90,7 +116,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="modifyCategorieResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="modifyCategorieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="deleteCategorie">
     <complexType>
@@ -100,7 +130,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="deleteCategorieResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="deleteCategorieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="searchByCodepostal">
     <complexType>
@@ -181,6 +215,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="searchAllResponse">
+
+      <wsdl:part element="impl:searchAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="deleteAnnonceRequest">
 
       <wsdl:part element="impl:deleteAnnonce" name="parameters">
@@ -200,6 +242,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="testRequest">
 
       <wsdl:part element="impl:test" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchAllRequest">
+
+      <wsdl:part element="impl:searchAll" name="parameters">
 
       </wsdl:part>
 
@@ -294,6 +344,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </wsdl:message>
 
    <wsdl:portType name="Action">
+
+      <wsdl:operation name="searchAll">
+
+         <wsdl:input message="impl:searchAllRequest" name="searchAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchAllResponse" name="searchAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="test">
 
@@ -420,6 +482,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:binding name="ActionSoapBinding" type="impl:Action">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="searchAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="test">
 

@@ -56,40 +56,40 @@ public class ActionProxy implements action.Action {
     return action.searchByCategorie(categorie);
   }
   
-  public void newAnnonce(java.lang.String categorie, java.lang.String nom, java.lang.String rue, java.lang.String ville, java.lang.String postal, java.lang.String tele, java.lang.String text) throws java.rmi.RemoteException{
+  public java.lang.String newAnnonce(java.lang.String categorie, java.lang.String nom, java.lang.String rue, java.lang.String ville, java.lang.String postal, java.lang.String tele, java.lang.String text) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.newAnnonce(categorie, nom, rue, ville, postal, tele, text);
+    return action.newAnnonce(categorie, nom, rue, ville, postal, tele, text);
   }
   
-  public void modifyAnnonce(java.lang.String categorie, java.lang.String nom, java.lang.String rue, java.lang.String ville, java.lang.String postal, java.lang.String tele, java.lang.String text, int id_annonce) throws java.rmi.RemoteException{
+  public java.lang.String modifyAnnonce(java.lang.String categorie, java.lang.String nom, java.lang.String rue, java.lang.String ville, java.lang.String postal, java.lang.String tele, java.lang.String text, int id_annonce) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.modifyAnnonce(categorie, nom, rue, ville, postal, tele, text, id_annonce);
+    return action.modifyAnnonce(categorie, nom, rue, ville, postal, tele, text, id_annonce);
   }
   
-  public void deleteAnnonce(int id_annonce) throws java.rmi.RemoteException{
+  public java.lang.String deleteAnnonce(int id_annonce) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.deleteAnnonce(id_annonce);
+    return action.deleteAnnonce(id_annonce);
   }
   
-  public void newCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
+  public java.lang.String newCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.newCategorie(categorie);
+    return action.newCategorie(categorie);
   }
   
-  public void modifyCategorie(java.lang.String categorie, java.lang.String newCategorie) throws java.rmi.RemoteException{
+  public java.lang.String modifyCategorie(java.lang.String categorie, java.lang.String newCategorie) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.modifyCategorie(categorie, newCategorie);
+    return action.modifyCategorie(categorie, newCategorie);
   }
   
-  public void deleteCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
+  public java.lang.String deleteCategorie(java.lang.String categorie) throws java.rmi.RemoteException{
     if (action == null)
       _initActionProxy();
-    action.deleteCategorie(categorie);
+    return action.deleteCategorie(categorie);
   }
   
   public java.lang.String searchByCodepostal(java.lang.String codePostal) throws java.rmi.RemoteException{
@@ -102,6 +102,12 @@ public class ActionProxy implements action.Action {
     if (action == null)
       _initActionProxy();
     return action.searchByNom(nom);
+  }
+  
+  public java.lang.String searchAll() throws java.rmi.RemoteException{
+    if (action == null)
+      _initActionProxy();
+    return action.searchAll();
   }
   
   

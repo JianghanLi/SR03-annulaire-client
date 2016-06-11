@@ -9,7 +9,7 @@ public class Test {
 		ActionProxy actionProxy = new ActionProxy();
 		String result = "";
 		try {
-			result = actionProxy.searchByCategorie("moto");
+			result = actionProxy.searchAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
