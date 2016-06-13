@@ -45,9 +45,9 @@ public class Annonce extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ActionProxy ap = new ActionProxy();
-		String action = request.getParameter("action");
-		int id_annonce = Integer.parseInt(request.getParameter("id_annonce"));
+		String action = request.getParameter("action");		
 		if(action.equals("modify")) {
+			int id_annonce = Integer.parseInt(request.getParameter("id_annonce"));
 			String categorie = request.getParameter("categorie");
 			String code_postal = request.getParameter("code_postal");
 			String nom = request.getParameter("nom");
@@ -56,8 +56,14 @@ public class Annonce extends HttpServlet {
 			String text = request.getParameter("text");
 			String ville = request.getParameter("ville");
 			ap.modifyAnnonce(categorie, nom, rue, ville, code_postal, telephone, text, id_annonce);
+			response.sendRedirect("/SR03-annulaire-client/annonceDetail.jsp?id_annonce="+id_annonce);
+		} else if (action.equals("add")) {
+			String query = (String)request.getParameter("query");
+			String categorie = (String)request.getParameter("categorie");
+			ap.newAnnonce(categorie, query, "", "", "", "", "");
+			response.sendRedirect("/SR03-annulaire-client/index.jsp");
 		}
-		response.sendRedirect("/SR03-annulaire-client/annonceDetail.jsp?id_annonce="+id_annonce);
+		
 	}
 
 	/**

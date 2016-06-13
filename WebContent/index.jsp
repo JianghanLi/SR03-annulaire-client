@@ -26,6 +26,12 @@
 </head>
 <body>
     <p>Annonces</p>
+    <form class="form-wrapper annonceForm" method="POST" action="/SR03-annulaire-client/Annonce">
+	   	<input type="text" name="action" value="add" style="display:none">
+	   	<select name="categorie"></select>
+	   	<input type="text" name="query" placeholder="new annonce name.." required>
+	    <button type="submit">Add annonce</button>
+	</form>
     <table class="table annonces">
         <tr>
             <td>id_annonce</td>
@@ -38,6 +44,11 @@
             <td>action</td>
         </tr>
     </table>
+    <p>Catégorie</p>
+    <form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
+	   	<input type="text" name="query" placeholder="new categorie name.." required>
+	    <button type="submit">Add Categorie</button>
+	</form>
      <table class="table categories">
         <tr>
             <td>title</td>
@@ -69,6 +80,8 @@
 			'<td><a href="/SR03-annulaire-client/Categorie?action=delete&title=' + categorie + '">Supprimer</a></td>' +
 			'</tr>';
 			$('.table.categories tbody').append(categorieString);  
+			var categorieOption = '<option value="'+ categorie + '">' + categorie + '</option>';
+			$('.annonceForm select').append(categorieOption);  
 		}
 		for (var i=0; i<annonces.length; ++i) {
 			addAnnonce(annonces[i]);
@@ -78,9 +91,6 @@
 		}
 		
 	</script>
-	<form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
-	   	<input type="text" name="query" placeholder="new categorie name.." required>
-	    <button type="submit">Add Categorie</button>
-	</form>
+	
 </body>
 </html>
