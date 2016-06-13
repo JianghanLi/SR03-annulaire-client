@@ -12,12 +12,13 @@
 	<%
 		ActionProxy actionProxy = new ActionProxy();
 		String annonce = "";
+		String categories = "";
 		try {
 			annonce = actionProxy.searchAll();
+			categories = '"' + actionProxy.getGategorie() + '"';
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		System.out.println(annonce);
 	%>
 	
 	
@@ -37,8 +38,17 @@
             <td>action</td>
         </tr>
     </table>
+     <table class="table categories">
+        <tr>
+            <td>title</td>
+            <td>editer</td>
+            <td>supprimer</td>
+        </tr>
+    </table>
     <script type="text/javascript">
 		var annonces = <%= annonce%>;
+		var categories = <%= categories%>;
+		categories = categories.split(";");
 		function addAnnonce(annonce) {
 			var annonceString = '<tr id_annonce=' + annonce.id_annonce + '>' + 
 			'<td>' + annonce.id_annonce + '</td>' + 
@@ -47,14 +57,26 @@
 			'<td>' + annonce.telephone + '</td>' +
 			'<td>' + annonce.code_postal + '</td>' +
 			'<td>' + annonce.text + '</td>' + 
-			'<td> Editer </td>' +
+			'<td><a href="/SR03-annulaire-client/annonceDetail.jsp?id_annonce=' + annonce.id_annonce + '">Editer</a> </td>' +
 			'<td><a href="/SR03-annulaire-client/Annonce?action=delete&id=' + annonce.id_annonce + '">Supprimer</a></td>' +
 			'</tr>';
 			$('.table.annonces tbody').append(annonceString);  
 		}
+		function addCategorie(categorie) {
+			var categorieString = '<tr title=' + categorie + '>' + 
+			'<td>' + categorie + '</td>' + 
+			'<td> Editer </td>' +
+			'<td><a href="/SR03-annulaire-client/Categorie?action=delete&title=' + categorie + '">Supprimer</a></td>' +
+			'</tr>';
+			$('.table.categories tbody').append(categorieString);  
+		}
 		for (var i=0; i<annonces.length; ++i) {
 			addAnnonce(annonces[i]);
 		}
+		for (var i=0; i<categories.length; ++i) {
+			addCategorie(categories[i]);
+		}
+		
 	</script>
 	<form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
 	   	<input type="text" name="query" placeholder="new categorie name.." required>

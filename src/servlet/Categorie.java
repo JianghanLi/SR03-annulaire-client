@@ -33,7 +33,14 @@ public class Categorie extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String action = (String)request.getParameter("action");
+		ActionProxy actionProxy = new ActionProxy();
+		if(action.equals("delete")) {
+			String title = (String)request.getParameter("title");			
+			actionProxy.deleteCategorie(title);
+			System.out.println("delete categorie by title " + title);			
+		}
+		response.sendRedirect("/SR03-annulaire-client/index.jsp");
 	}
 
 	/**
