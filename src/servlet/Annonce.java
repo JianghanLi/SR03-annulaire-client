@@ -29,6 +29,7 @@ public class Annonce extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String action = (String)request.getParameter("action");
 		if(action.equals("delete")) {
 			int id_annonce = Integer.parseInt(request.getParameter("id"));
@@ -44,6 +45,7 @@ public class Annonce extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		ActionProxy ap = new ActionProxy();
 		String action = request.getParameter("action");		
 		if(action.equals("modify")) {

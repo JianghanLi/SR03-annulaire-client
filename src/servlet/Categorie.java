@@ -33,6 +33,7 @@ public class Categorie extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String action = (String)request.getParameter("action");
 		ActionProxy actionProxy = new ActionProxy();
 		if(action.equals("delete")) {
@@ -47,6 +48,7 @@ public class Categorie extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String query = (String)request.getParameter("query");
 		System.out.println(query);
 		ActionProxy actionProxy = new ActionProxy();
