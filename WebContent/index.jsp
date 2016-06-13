@@ -10,17 +10,46 @@
     <script src="/SR03-annulaire-client/js/jquery-1.12.1.min.js"></script>
 	<title>Insert title here</title>
 	<%
+		String searchBy = request.getParameter("searchBy");
+		if(searchBy == null) {
+			searchBy = "";
+		}
+		String value = request.getParameter("value");
 		ActionProxy actionProxy = new ActionProxy();
 		String annonce = "";
 		String categories = "";
 		try {
-			annonce = actionProxy.searchAll();
+			switch (searchBy) {
+	            case "nom":  
+	            	annonce = actionProxy.searchByNom(value);
+	                break;
+	            case "categorie":  
+	            	annonce = actionProxy.searchByCategorie(value);
+	                break;
+	            case "code_postal":  
+	            	annonce = actionProxy.searchByCodepostal(value);
+	                break;
+	            default: 
+	            	annonce = actionProxy.searchAll();		
+	                break;
+        	}
+				
 			categories = '"' + actionProxy.getGategorie() + '"';
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	%>
+	<script type="text/javascript">
 	
+	function search(searchBy, value) {
+		if(value=="") {
+			document.location.href = 'index.jsp';
+		} else {
+			document.location.href = 'index.jsp?searchBy=' + searchBy + '&value=' + value;
+		}
+		
+	}
+	</script>
 	
 
 </head>
@@ -35,13 +64,13 @@
     <table class="table annonces">
         <tr>
             <td>id_annonce</td>
-            <td>categorie</td>
-            <td>nom</td>
+            <td><input class="categorie" type="search" onsearch='search("categorie",this.value)' placeholder="categorie"></input></td>
+            <td><input class="nom" type="search" onsearch='search("nom",this.value)' placeholder="nom"></input></td>
             <td>telephone</td>
-            <td>code_postal</td>
+            <td><input class="code_postal" type="search" onsearch='search("code_postal",this.value)' placeholder="code_postal"></input></td>
             <td>ville</td>
-            <td>text</td>
-            <td>action</td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
     <p>Catégorie</p>
@@ -88,6 +117,14 @@
 		}
 		for (var i=0; i<categories.length; ++i) {
 			addCategorie(categories[i]);
+		}
+		if(annonces.length==0) {
+			var message = "<tr><td></td><td></td><td></td><td>No annonce found.</td></tr>"; 
+			$('.table.annonces tbody').append(message);  
+		}
+		if(categories.length==0) {
+			var message = "<tr><td></td><td></td><td></td><td>No categories found.</td></tr>"; 
+			$('.table.categories tbody').append(message);  
 		}
 		
 	</script>
