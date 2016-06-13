@@ -54,41 +54,48 @@
 
 </head>
 <body>
-    <p>Annonces</p>
+    <h1>Annonces</h1>
     <form class="form-wrapper annonceForm" method="POST" action="/SR03-annulaire-client/Annonce">
+	   	<p>Ajouter nouveau annonces:</p>
 	   	<input type="text" name="action" value="add" style="display:none">
-	   	<select name="categorie"></select>
+	   	<select name="categorie" class="categorieSelect" required></select>
 	   	<input type="text" name="query" placeholder="new annonce name.." required>
-	    <button type="submit">Add annonce</button>
-	</form>
+	    <button type="submit">Valider</button>
+	</form><br>
     <table class="table annonces">
-        <tr>
-            <td>id_annonce</td>
-            <td><input class="categorie" type="search" onsearch='search("categorie",this.value)' placeholder="categorie"></input></td>
-            <td><input class="nom" type="search" onsearch='search("nom",this.value)' placeholder="nom"></input></td>
-            <td>telephone</td>
-            <td><input class="code_postal" type="search" onsearch='search("code_postal",this.value)' placeholder="code_postal"></input></td>
-            <td>ville</td>
-            <td></td>
-            <td></td>
-        </tr>
+        <thead><tr>
+            <th>id_annonce</th>
+            <th><select class="categorie categorieSelect" onchange='search("categorie",this.value)'>
+            	<option value="">Tout</option>
+            </select></th>
+            <th><input class="nom" type="search" onsearch='search("nom",this.value)' placeholder="nom"></input></th>
+            <th>telephone</th>
+            <th><input class="code_postal" type="search" onsearch='search("code_postal",this.value)' placeholder="code_postal"></input></th>
+            <th>ville</th>
+            <th></th>
+            <th></th>
+        </tr></thead>
+        <tbody></tbody>
     </table>
-    <p>Catégorie</p>
+    <h1>Catégorie</h1>
     <form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
+	   	<p>Ajouter nouveau catégorie:</p>
 	   	<input type="text" name="query" placeholder="new categorie name.." required>
-	    <button type="submit">Add Categorie</button>
+	    <button type="submit">Valider</button>
 	</form>
      <table class="table categories">
-        <tr>
-            <td>title</td>
-            <td>editer</td>
-            <td>supprimer</td>
-        </tr>
+        <thead><tr>
+            <th>title</th>
+            <th>editer</th>
+            <th>supprimer</th>
+        </tr><thead>
+        <tbody></tbody>
     </table>
     <script type="text/javascript">
-		var annonces = <%= annonce%>;
+    	var annonces = <%= annonce%>;
 		var categories = <%= categories%>;
 		categories = categories.split(";");
+		var searchBy = "<%= searchBy%>";
 		function addAnnonce(annonce) {
 			var annonceString = '<tr id_annonce=' + annonce.id_annonce + '>' + 
 			'<td>' + annonce.id_annonce + '</td>' + 
@@ -110,7 +117,7 @@
 			'</tr>';
 			$('.table.categories tbody').append(categorieString);  
 			var categorieOption = '<option value="'+ categorie + '">' + categorie + '</option>';
-			$('.annonceForm select').append(categorieOption);  
+			$('.categorieSelect').append(categorieOption);  
 		}
 		for (var i=0; i<annonces.length; ++i) {
 			addAnnonce(annonces[i]);
@@ -118,6 +125,7 @@
 		for (var i=0; i<categories.length; ++i) {
 			addCategorie(categories[i]);
 		}
+		
 		if(annonces.length==0) {
 			var message = "<tr><td></td><td></td><td></td><td>No annonce found.</td></tr>"; 
 			$('.table.annonces tbody').append(message);  
@@ -125,6 +133,10 @@
 		if(categories.length==0) {
 			var message = "<tr><td></td><td></td><td></td><td>No categories found.</td></tr>"; 
 			$('.table.categories tbody').append(message);  
+		}
+		if(searchBy) {
+			console.log(searchBy, "<%= value%>");
+			$(".table.annonces thead th ." + searchBy)[0].value="<%= value%>";
 		}
 		
 	</script>
