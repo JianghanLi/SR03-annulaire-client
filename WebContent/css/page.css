@@ -82,13 +82,9 @@ table tbody tr {
   color: #555;
 }
 table tbody tr td {
-  cursor: pointer;
   text-align: center;
   padding: 15px 10px;
 }
-table tbody tr td:hover{
-    text-decoration: underline
-} 
 table tbody tr td.lalign {
   text-align: left;
 }
