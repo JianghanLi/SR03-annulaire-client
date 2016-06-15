@@ -32,7 +32,10 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 strong, b { font-weight: bold; } 
 
 table { border-collapse: collapse; border-spacing: 0; }
-img { border: 0; max-width: 13%; }
+
+form input, form textarea {
+	width: 400px;	
+}
 
 h1 { 
   font-family: 'Amarante', Tahoma, sans-serif;

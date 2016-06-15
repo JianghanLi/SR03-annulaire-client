@@ -27,23 +27,52 @@
 		Map annonce = (HashMap)annonces.get(0);
 		String categories = ap.getGategorie();
 	%>
+	<h1>Détail d'annonce</h1>
 	<form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Annonce.do?action=modify&id_annonce=<%=id_annonce %>">
-	   	<label>Title</label><input type="text" name="nom" value='<%=annonce.get("nom") %>'><br/>
-	   	<label>Categorie </label>
-	   		<c:set var="categorie" scope="session" value='<%=annonce.get("categorie") %>'/>
-	   		<select name="categorie" class="categorieSelect" >
-	   			<c:forTokens items='<%= categories%>' delims=";" var="name">
-	   				<option ${name == categorie ? 'selected' : ''} ><c:out value="${name}"/></option>
-				</c:forTokens>
-	   		</select><br/>
-	   	<label>Content</label><textarea type="text" name="text"><%=annonce.get("text") %></textarea><br/>
-	   	<label>Tel</label><input type="text" name="telephone" value='<%=annonce.get("telephone") %>'><br/>
-	   	<label>Code Postal</label><input type="text" name="code_postal" value='<%=annonce.get("code_postal") %>'><br/>
-	   	<label>Rue</label><input type="text" name="rue" value='<%=annonce.get("rue") %>'><br/>
-	   	<label>Ville</label><input type="text" name="ville" value='<%=annonce.get("ville") %>'><br/>
-	    <button type="submit">Modify</button>
+	   	<table>
+		   	<tr>
+		   		<td>Title</td>
+		   		<td><input type="text" name="nom" value='<%=annonce.get("nom") %>'></td>
+		   	</tr>
+		   	<tr>
+		   		<td>Categorie</td>
+		   		<td>
+			   		<c:set var="categorie" scope="session" value='<%=annonce.get("categorie") %>'/>
+			   		<select style="width:100%" name="categorie" class="categorieSelect" >
+			   			<c:forTokens items='<%= categories%>' delims=";" var="name">
+			   				<option ${name == categorie ? 'selected' : ''} ><c:out value="${name}"/></option>
+						</c:forTokens>
+			   		</select>
+		   		</td>
+		   	</tr>
+		   	<tr>
+		   		<td>Tel</td>
+		   		<td><input type="text" name="telephone" value='<%=annonce.get("telephone") %>'></td>
+		   	</tr>
+		   	<tr>
+		   		<td>Code Postal</td>
+		   		<td><input type="text" name="code_postal" value='<%=annonce.get("code_postal") %>'></td>
+		   	</tr>
+		   	<tr>
+		   		<td>Rue</td>
+		   		<td><input type="text" name="rue" value='<%=annonce.get("rue") %>'></td>
+		   	</tr>
+		   	<tr>
+		   		<td>Ville</td>
+		   		<td><input type="text" name="ville" value='<%=annonce.get("ville") %>'></td>
+		   	</tr>
+		   	<tr>
+		   		<td>Content</td>
+		   		<td><textarea type="text" name="text"><%=annonce.get("text") %></textarea></td>
+		   	</tr>
+		   	<tr>
+		   		<td></td>
+		   		<td><button type="submit">Modify</button></td>
+		   	</tr>	   	
+	   	</table>
+	   	<a style="position:absolute;right:100px;" href="index.jsp"><img alt="Back" style="height:100px" src="img/back.png"></a>
 	</form>
-	<a href="index.jsp">Back</a>
+	
 </body>
 
 </html>

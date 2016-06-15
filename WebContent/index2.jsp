@@ -89,7 +89,7 @@
 			'<td>' + annonce.telephone + '</td>' +
 			'<td>' + annonce.code_postal + '</td>' +
 			'<td>' + annonce.ville + '</td>' + 
-			'<td><a href="/SR03-annulaire-client/annonceDetail.jsp?id_annonce=' + annonce.id_annonce + '">Détail</a> </td>' +
+			'<td><a href="/SR03-annulaire-client/annonceDetail2.jsp?id_annonce=' + annonce.id_annonce + '">Détail</a> </td>' +
 			'</tr>';
 			$('.table.annonces tbody').append(annonceString);  
 		}

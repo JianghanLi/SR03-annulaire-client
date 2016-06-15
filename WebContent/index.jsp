@@ -56,7 +56,7 @@
 <body>
     <h1>Annonces</h1>
     <form class="form-wrapper annonceForm" method="POST" action="/SR03-annulaire-client/Annonce">
-	   	<p>Ajouter nouveau annonces:</p>
+	   	<label>Ajouter nouveau annonces:&nbsp;&nbsp;</label>
 	   	<input type="text" name="action" value="add" style="display:none">
 	   	<select name="categorie" class="categorieSelect" required></select>
 	   	<input type="text" name="query" placeholder="new annonce name.." required>
@@ -79,10 +79,10 @@
     </table>
     <h1>Catégorie</h1>
     <form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Categorie">
-	   	<p>Ajouter nouveau catégorie:</p>
+	   	<label>Ajouter nouveau catégorie:&nbsp;&nbsp;</label>
 	   	<input type="text" name="query" placeholder="new categorie name.." required>
 	    <button type="submit">Valider</button>
-	</form>
+	</form><br>
      <table class="table categories">
         <thead><tr>
             <th>title</th>
