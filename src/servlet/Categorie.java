@@ -35,17 +35,18 @@ public class Categorie extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = (String)request.getParameter("action");
 		ActionProxy actionProxy = new ActionProxy();
+		String message = "";
 		if(action.equals("delete")) {
 			String title = (String)request.getParameter("title");			
-			actionProxy.deleteCategorie(title);
+			message = actionProxy.deleteCategorie(title);
 			System.out.println("delete categorie by title " + title);			
 		} else if(action.equals("edit")) {
 			String categorie = (String)request.getParameter("categorie");
 			String newName = (String)request.getParameter("newName");
-			actionProxy.modifyCategorie(categorie, newName);
+			message = actionProxy.modifyCategorie(categorie, newName);
 			System.out.println("change categorie from " + categorie + " to " + newName);
 		}
-		response.sendRedirect("/SR03-annulaire-client/index.jsp");
+		response.sendRedirect("/SR03-annulaire-client/index.jsp?message=" + message);
 	}
 
 	/**
@@ -56,8 +57,8 @@ public class Categorie extends HttpServlet {
 		String query = (String)request.getParameter("query");
 		System.out.println(query);
 		ActionProxy actionProxy = new ActionProxy();
-		actionProxy.newCategorie(query);
-		response.sendRedirect("/SR03-annulaire-client/index.jsp");
+		String message = actionProxy.newCategorie(query);
+		response.sendRedirect("/SR03-annulaire-client/index.jsp?message=" + message);
 	}
 
 	/**

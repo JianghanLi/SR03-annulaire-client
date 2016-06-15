@@ -27,7 +27,10 @@
 		Map annonce = (HashMap)annonces.get(0);
 		String categories = ap.getGategorie();
 	%>
-	<h1>Détail d'annonce</h1>
+	
+	<img class="utcLogo" src="img/logosUTC_SU.jpg">
+	<h3 style="color:#5f74a0">Web service message:&nbsp; ${not empty param.message? param.message : "Welcome!"}</h3>
+    <h1>Détail d'annonce</h1>
 	<table>
 	   	<tr>
 	   		<td>Title</td>

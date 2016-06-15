@@ -46,6 +46,12 @@ h1 {
   text-align: center;
 }
 
+img.utcLogo {
+	position: absolute;
+	right: 50px;
+	width: 150px;
+}
+
 /** page structure **/
 
 table {

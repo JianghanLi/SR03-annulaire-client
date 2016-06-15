@@ -27,7 +27,9 @@
 		Map annonce = (HashMap)annonces.get(0);
 		String categories = ap.getGategorie();
 	%>
-	<h1>Détail d'annonce</h1>
+	<img class="utcLogo" src="img/logosUTC_SU.jpg">
+	<h3 style="color:#5f74a0">Web service message:&nbsp; ${not empty param.message? param.message : "Welcome!"}</h3>
+    <h1>Détail d'annonce</h1>
 	<form class="form-wrapper cf" method="POST" action="/SR03-annulaire-client/Annonce.do?action=modify&id_annonce=<%=id_annonce %>">
 	   	<table>
 		   	<tr>

@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/SR03-annulaire-client/css/page.css">
     <script src="/SR03-annulaire-client/js/jquery-1.12.1.min.js"></script>
-	<title>Insert title here</title>
+	<title>Annulaire Readonly</title>
 	<%
 		String searchBy = request.getParameter("searchBy");
 		if(searchBy == null) {
@@ -54,6 +54,8 @@
 
 </head>
 <body>
+	<img class="utcLogo" src="img/logosUTC_SU.jpg">
+    <h3 style="color:#5f74a0">Web service message:&nbsp; ${not empty param.message? param.message : "Welcome!"}</h3>
     <h1>Annonces</h1>
     <table class="table annonces">
         <thead><tr>

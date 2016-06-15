@@ -31,13 +31,14 @@ public class Annonce extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = (String)request.getParameter("action");
+		String message = "";
 		if(action.equals("delete")) {
 			int id_annonce = Integer.parseInt(request.getParameter("id"));
 			ActionProxy actionProxy = new ActionProxy();
-			actionProxy.deleteAnnonce(id_annonce);
+			message = actionProxy.deleteAnnonce(id_annonce);
 			System.out.println("delete annonce by id " + id_annonce);			
 		}
-		response.sendRedirect("/SR03-annulaire-client/index.jsp");
+		response.sendRedirect("/SR03-annulaire-client/index.jsp?message=" + message);
 	}
 
 	/**
@@ -57,13 +58,13 @@ public class Annonce extends HttpServlet {
 			String telephone = request.getParameter("telephone");
 			String text = request.getParameter("text");
 			String ville = request.getParameter("ville");
-			ap.modifyAnnonce(categorie, nom, rue, ville, code_postal, telephone, text, id_annonce);
-			response.sendRedirect("/SR03-annulaire-client/annonceDetail.jsp?id_annonce="+id_annonce);
+			String message = ap.modifyAnnonce(categorie, nom, rue, ville, code_postal, telephone, text, id_annonce);
+			response.sendRedirect("/SR03-annulaire-client/annonceDetail.jsp?id_annonce="+id_annonce + "&message=" + message);
 		} else if (action.equals("add")) {
 			String query = (String)request.getParameter("query");
 			String categorie = (String)request.getParameter("categorie");
-			ap.newAnnonce(categorie, query, "", "", "", "", "");
-			response.sendRedirect("/SR03-annulaire-client/index.jsp");
+			String message = ap.newAnnonce(categorie, query, "", "", "", "", "");
+			response.sendRedirect("/SR03-annulaire-client/index.jsp?message=" + message);
 		}
 		
 	}
