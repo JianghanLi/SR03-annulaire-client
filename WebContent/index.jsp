@@ -135,7 +135,6 @@
 			$('.table.categories tbody').append(message);  
 		}
 		if(searchBy) {
-			console.log(searchBy, "<%= value%>");
 			$(".table.annonces thead th ." + searchBy)[0].value="<%= value%>";
 		}
 		
