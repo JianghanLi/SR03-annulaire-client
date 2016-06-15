@@ -33,13 +33,17 @@ public class Categorie extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		String action = (String)request.getParameter("action");
 		ActionProxy actionProxy = new ActionProxy();
 		if(action.equals("delete")) {
 			String title = (String)request.getParameter("title");			
 			actionProxy.deleteCategorie(title);
 			System.out.println("delete categorie by title " + title);			
+		} else if(action.equals("edit")) {
+			String categorie = (String)request.getParameter("categorie");
+			String newName = (String)request.getParameter("newName");
+			actionProxy.modifyCategorie(categorie, newName);
+			System.out.println("change categorie from " + categorie + " to " + newName);
 		}
 		response.sendRedirect("/SR03-annulaire-client/index.jsp");
 	}

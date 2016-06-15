@@ -109,10 +109,18 @@
 			'</tr>';
 			$('.table.annonces tbody').append(annonceString);  
 		}
+		function editCategorie(categorie) {
+			var newName = prompt("Entrez nouveau nom pour catégorie:", categorie);
+			if(newName==categorie) {
+				return;
+			}
+			var href = "Categorie?action=edit&categorie=" + categorie + "&newName=" + newName;
+			window.location.href= href;
+		}
 		function addCategorie(categorie) {
 			var categorieString = '<tr title=' + categorie + '>' + 
 			'<td>' + categorie + '</td>' + 
-			'<td> Editer </td>' +
+			'<td><a href=javascript:editCategorie("' + categorie + '");>Editer</a></td>' +
 			'<td><a href="/SR03-annulaire-client/Categorie?action=delete&title=' + categorie + '">Supprimer</a></td>' +
 			'</tr>';
 			$('.table.categories tbody').append(categorieString);  
